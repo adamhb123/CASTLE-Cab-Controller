@@ -25,7 +25,6 @@ CastleCabController/
 ├── platformio.ini       # Board and build configuration (Teensy 2.0, Arduino framework)
 ├── src/
 │   └── main.cpp         # Main sketch
-├── include/             # Shared header files
 └── PINOUT.md            # Arduino integer → board label mapping for the Teensy 2.0
 ```
 
