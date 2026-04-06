@@ -23,9 +23,12 @@ PlatformIO handles the compiler toolchain, Teensyduino libraries, and flashing a
 ```
 CastleCabController/
 ├── platformio.ini       # Board and build configuration (Teensy 2.0, Arduino framework)
-├── src/
-│   └── main.cpp         # Main sketch
-└── PINOUT.md            # Arduino integer → board label mapping for the Teensy 2.0
+├── PINOUT.md            # Arduino integer → board label mapping for the Teensy 2.0
+├── pinout2a.png         # Visual Teensy 2.0 pinout diagram
+├── src/                 # Main sketch source code
+├── include/             # Shared project header files
+├── lib/                 # Project-local libraries
+└── test/                # PlatformIO unit tests
 ```
 
 ## Building and Uploading
