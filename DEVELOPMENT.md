@@ -1,60 +1,48 @@
-# Development Setup — Teensy 2.0 in VS Code
+# Development Setup
 
 ## Prerequisites
 
 - [VS Code](https://code.visualstudio.com/)
-- [PlatformIO IDE extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) (install from VS Code extensions panel)
+- [PlatformIO IDE extension](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide) — install from the VS Code extensions panel
 
-PlatformIO handles the compiler toolchain, Teensyduino libraries, and flashing — no Arduino IDE required.
+PlatformIO handles the compiler toolchain, Teensyduino libraries, and flashing automatically. No Arduino IDE required.
 
-## Project Setup
+## Getting Started
 
-1. Open VS Code and click the PlatformIO icon in the sidebar
-2. Select **New Project**
-3. Fill in:
-   - **Name:** CastleCabController
-   - **Board:** Teensy 2.0
-   - **Framework:** Arduino
-4. Click **Finish** — PlatformIO will scaffold the project and install the Teensy platform
+1. Clone the repository and open the project folder in VS Code:
+   ```
+   git clone <repo-url>
+   cd CastleCabController
+   code .
+   ```
+2. PlatformIO will detect `platformio.ini` and prompt you to install dependencies — click **Yes** (or let it install automatically).
+3. Wait for the Teensy platform and framework to finish downloading (first-time only).
 
 ## Project Structure
 
 ```
 CastleCabController/
-├── platformio.ini       # Board and build configuration
+├── platformio.ini       # Board and build configuration (Teensy 2.0, Arduino framework)
 ├── src/
-│   └── main.cpp         # Your sketch (replaces .ino, same Arduino API)
-└── include/             # Header files
-```
-
-Your `platformio.ini` should look like:
-
-```ini
-[env:teensy20]
-platform = teensy
-board = teensy20
-framework = arduino
-monitor_speed = 115200
-```
-
-## Moving the Existing Sketch
-
-Copy the contents of `CastleCabController.ino` into `src/main.cpp` and add the Arduino header at the top:
-
-```cpp
-#include <Arduino.h>
+│   └── main.cpp         # Main sketch
+├── include/             # Shared header files
+└── PINOUT.md            # Arduino integer → board label mapping for the Teensy 2.0
 ```
 
 ## Building and Uploading
 
-| Action | VS Code shortcut | PlatformIO button |
-|--------|-----------------|-------------------|
-| Build  | `Ctrl+Alt+B`    | ✓ checkmark       |
-| Upload | `Ctrl+Alt+U`    | → arrow           |
-| Serial monitor | `Ctrl+Alt+S` | plug icon    |
+| Action | VS Code shortcut | PlatformIO toolbar button |
+|--------|-----------------|--------------------------|
+| Build  | `Ctrl+Alt+B`    | ✓ checkmark              |
+| Upload | `Ctrl+Alt+U`    | → arrow                  |
+| Serial monitor | `Ctrl+Alt+S` | plug icon           |
 
-When uploading, the Teensy bootloader will activate automatically. If it doesn't, press the reset button on the board.
+Connect the Teensy 2.0 via USB before uploading. The Teensy bootloader activates automatically; if the upload stalls, press the reset button on the board.
 
 ## Serial Monitor
 
-The serial monitor is built into PlatformIO. It connects at the baud rate set in `monitor_speed` in `platformio.ini`. Open it with the plug icon in the bottom toolbar or `Ctrl+Alt+S`.
+The serial monitor runs at 115200 baud (`Serial.begin(115200)` in `setup()`). Open it with the plug icon in the bottom toolbar or `Ctrl+Alt+S`.
+
+## Pin Numbering
+
+The Teensy 2.0 board labels pins with port names (e.g. `D0`, `B1`) rather than integers. Use `PINOUT.md` to look up the Arduino integer for any board-label pin.
