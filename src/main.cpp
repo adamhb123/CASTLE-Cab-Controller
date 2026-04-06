@@ -9,17 +9,19 @@ struct Button
 };
 
 Button buttons[] = {
-  Button("Start1", 5),
-  Button("Start2", 6),
-  Button("LIVE", 7),
+  // Left-hand side of cabinet
+  Button("Start1", 5), // Start game (top)
+  Button("Start2", 6), // Start game (bottom)
+  Button("LIVE", 7), // Yellow button
+  // Joystick
   Button("JoyUp", 8), // Yellow wires
   Button("JoyDown", 9), // Black wires
   Button("JoyRight", 10), // Red Wires
   Button("JoyLeft", 11), // Green Wires
-  Button("Fire", 12),
-  Button("Aux1", 13),
-  Button("Aux2", 14),
-
+  // Right hand side of cabinet
+  Button("Fire", 12), // Red button
+  Button("Aux1", 13), // White button (left)
+  Button("Aux2", 14), // White button right
 };
 
 const size_t n_buttons = sizeof(buttons) / sizeof(buttons[0]);
